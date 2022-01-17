@@ -1,0 +1,25 @@
+FROM centos:7.7.1908
+
+MAINTAINER "Rajwinder Marwaha"
+
+RUN  yum update -y 
+
+RUN  curl -sL https://rpm.nodesource.com/setup | bash -
+
+RUN yum install -y nodejs
+
+WORKDIR /app
+
+
+COPY . /app
+
+
+RUN npm install
+
+
+EXPOSE 9005
+
+
+ENTRYPOINT ["node"]
+
+CMD ["server.js"]
