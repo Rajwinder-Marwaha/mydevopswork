@@ -1,0 +1,23 @@
+FROM centos:7.7.1908
+
+MAINTAINER  "rajwindermarwaha@outlook.com Rajwinder Marwaha"
+
+RUN yum install  java wget curl  vim net-tools -y
+
+RUN yum clean all
+
+RUN  mkdir -p  /opt/tomcat
+
+WORKDIR  /opt/tomcat
+
+RUN  curl -O  https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.73/bin/apache-tomcat-8.5.73.tar.gz
+
+RUN  tar xfvz  apache-tomcat-8.5.73.tar.gz
+
+RUN  mv  apache-tomcat-8.5.73/*   /opt/tomcat/
+
+EXPOSE 8080
+
+CMD ["/opt/tomcat/bin/catalina.sh","run"]
+
+
